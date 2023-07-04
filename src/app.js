@@ -81,6 +81,12 @@ app.post("/sign-in", async (req, res) => {
     const user = await db.collection("users").findOne({ email });
     if (!user) return res.status(404).send("Usuário Não cadastrado");
 
+    const userSession = await db
+      .collection("sessions")
+      .findOne({ userId: user._id });
+    if (userSession !== null)
+      return res.status(409).send("Usuário já está logado");
+
     if (bcrypt.compareSync(password, user.password)) {
       const token = uuid();
       await db.collection("sessions").insertOne({ userId: user._id, token });
