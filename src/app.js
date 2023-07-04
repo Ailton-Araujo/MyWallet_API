@@ -3,7 +3,7 @@ import cors from "cors";
 import { MongoClient, ObjectId } from "mongodb";
 import dotenv from "dotenv";
 import Joi from "joi";
-import { userInfo } from "os";
+import bcrypt from "bcrypt";
 
 // Server Create
 const app = express();
@@ -26,17 +26,36 @@ try {
 
 const db = mongoClient.db();
 
+//DataSchema
+
+const userSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().email().required(),
+  password: Joi.string().min(3).required(),
+});
+
 //--------------------------EndPoints--------------------------
 
 //Sign-up
 
 app.post("/sign-up", async (req, res) => {
-  const user = req.body;
-  console.log(user);
+  const { name, email, password } = req.body;
+
+  const validation = userSchema.validate(req.body, { abortEarly: false });
+
+  if (validation.error) {
+    const errors = validation.error.details.map((detail) => detail.message);
+    return res.status(422).send(errors);
+  }
   try {
-    await db.collection("users").insertOne(user);
+    const userMail = await db.collection("users").findOne({ email });
+    if (userMail) return res.status(409).send("E-mail já cadastrado");
+
+    const hash = bcrypt.hashSync(password, 10);
+
+    await db.collection("users").insertOne({ name, email, password: hash });
     res.sendStatus(201);
-  } catch (error) {
+  } catch (err) {
     res.status(500).send(err.message);
   }
 });
