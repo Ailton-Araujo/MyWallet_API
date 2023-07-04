@@ -79,7 +79,7 @@ app.post("/sign-in", async (req, res) => {
   }
   try {
     const user = await db.collection("users").findOne({ email });
-    if (user) return res.status(404).send("Usuário Não cadastrado");
+    if (!user) return res.status(404).send("Usuário Não cadastrado");
 
     if (bcrypt.compareSync(password, user.password)) {
       const token = uuid();
