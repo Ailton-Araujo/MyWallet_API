@@ -3,6 +3,7 @@ import cors from "cors";
 import { MongoClient, ObjectId } from "mongodb";
 import dotenv from "dotenv";
 import Joi from "joi";
+import { userInfo } from "os";
 
 // Server Create
 const app = express();
@@ -12,18 +13,33 @@ app.use(cors());
 app.use(express.json());
 dotenv.config();
 
-//DataBase config
+// DataBase config
 
-// const mongoClient = new MongoClient(process.env.DATABASE_URL);
+const mongoClient = new MongoClient(process.env.DATABASE_URL);
 
-// try {
-//   await mongoClient.connect(); // top level await
-//   console.log("MongoDB conectado!");
-// } catch (err) {
-//   (err) => console.log(err.message);
-// }
+try {
+  await mongoClient.connect();
+  console.log("MongoDB connected successfully !");
+} catch (err) {
+  (err) => console.log(err.message);
+}
 
-// const db = mongoClient.db();
+const db = mongoClient.db();
+
+//--------------------------EndPoints--------------------------
+
+//Sign-up
+
+app.post("/sign-up", async (req, res) => {
+  const user = req.body;
+  console.log(user);
+  try {
+    await db.collection("users").insertOne(user);
+    res.sendStatus(201);
+  } catch (error) {
+    res.status(500).send(err.message);
+  }
+});
 
 // Server Listener
 
