@@ -1,4 +1,4 @@
-import { db } from "../database/database.connection.js";
+import db from "../database/database.connection.js";
 
 const listTransactions = async (req, res) => {
   const userId = res.locals.userId;

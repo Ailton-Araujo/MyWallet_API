@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 import { ObjectId } from "mongodb";
-import { db } from "../database/database.connection.js";
+import db from "../database/database.connection.js";
 
 const signIn = async (req, res) => {
   const { email, password } = req.body;
