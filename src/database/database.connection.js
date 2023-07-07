@@ -10,5 +10,6 @@ try {
 } catch (err) {
   (err) => console.log(err.message);
 }
+const db = mongoClient.db();
 
-export const db = mongoClient.db();
+export default db;

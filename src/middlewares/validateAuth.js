@@ -1,3 +1,4 @@
+import db from "../database/database.connection";
 export default async function validateAuth(req, res, next) {
   const authorization = req.headers.authorization;
   const token = authorization?.replace("Bearer ", "");
