@@ -4,9 +4,11 @@ import db from "../database/database.connection.js";
 const listTransactions = async (req, res) => {
   const userId = res.locals.userId;
   try {
-    const user = await db.collection("users").find({ _id: userId }).toArray();
+    const user = await db.collection("users").findOne({ _id: userId });
     if (!user) return res.status(404).send("Usuário não encontrado");
+
     delete user.password;
+    delete user._id;
     const transactions = await db
       .collection("transactions")
       .find({
@@ -14,7 +16,7 @@ const listTransactions = async (req, res) => {
       })
       .sort({ $natural: -1 })
       .toArray();
-    res.send({ user: user[0], transactions });
+    res.send({ user, transactions });
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -41,7 +43,7 @@ const deleteTransaction = async (req, res) => {
   const { id } = req.params();
   const userId = res.locals.userId;
   try {
-    const transaction = await db.collection("transactions").find({
+    const transaction = await db.collection("transactions").findOne({
       _id: id,
     });
     if (!transaction) return res.status(404).send("Transação não encontrada");
@@ -62,7 +64,7 @@ const editTransaction = async (req, res) => {
   const { description, amount, type } = req.body;
 
   try {
-    const transaction = await db.collection("transactions").find({
+    const transaction = await db.collection("transactions").findOne({
       _id: id,
     });
     if (!transaction) return res.status(404).send("Transação não encontrada");
