@@ -18,9 +18,11 @@ const listTransactions = async (req, res) => {
 };
 
 const addTransaction = async (req, res) => {
+  const userId = res.locals.userId;
   const { description, amount, type } = req.body;
   try {
     await db.collection("transactions").insertOne({
+      userId,
       description,
       amount,
       type,
@@ -40,6 +42,8 @@ const deleteTransaction = async (req, res) => {
       _id: id,
     });
     if (!transaction) return res.status(404).send("Transação não encontrada");
+    if (transaction.userId !== userId)
+      return res.status(404).send("Você não pode deletar essa transação");
     await db.collection("transactions").deleteOne({
       transaction,
     });
