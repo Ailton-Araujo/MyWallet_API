@@ -14,7 +14,7 @@ const listTransactions = async (req, res) => {
       })
       .sort({ $natural: -1 })
       .toArray();
-    res.send({ user, ...transactions });
+    res.send({ user, transactions });
   } catch (err) {
     res.status(500).send(err.message);
   }
