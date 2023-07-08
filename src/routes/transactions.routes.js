@@ -12,13 +12,13 @@ const transactionRouter = Router();
 
 transactionRouter.get("/transactions", listTransactions);
 transactionRouter.post(
-  "/transaction/:type",
+  "/addTransaction/",
   validateSchema(transactionSchema),
   addTransaction
 );
 transactionRouter.delete("/transaction/:id", deleteTransaction);
 transactionRouter.put(
-  "/transaction-edit/:id",
+  "/transaction/:id",
   validateSchema(transactionSchema),
   editTransaction
 );
