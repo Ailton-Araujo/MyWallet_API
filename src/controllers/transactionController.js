@@ -1,5 +1,6 @@
 import { stripHtml } from "string-strip-html";
 import db from "../database/database.connection.js";
+import { ObjectId } from "mongodb";
 
 const listTransactions = async (req, res) => {
   const userId = res.locals.userId;
@@ -40,19 +41,21 @@ const addTransaction = async (req, res) => {
 };
 
 const deleteTransaction = async (req, res) => {
-  const { id } = req.params();
+  const { id } = req.params;
   const userId = res.locals.userId;
   try {
     const transaction = await db.collection("transactions").findOne({
-      _id: id,
+      _id: new ObjectId(id),
     });
     if (!transaction) return res.status(404).send("Transação não encontrada");
-    if (transaction.userId !== userId)
+
+    if (!userId.equals(transaction.userId))
       return res.status(404).send("Você não pode deletar essa transação");
+
     await db.collection("transactions").deleteOne({
-      transaction,
+      _id: new ObjectId(id),
     });
-    res.sendStatus(200);
+    res.sendStatus(204);
   } catch (err) {
     res.status(500).send(err.message);
   }
