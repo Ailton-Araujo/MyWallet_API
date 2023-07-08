@@ -4,7 +4,7 @@ import db from "../database/database.connection.js";
 const listTransactions = async (req, res) => {
   const userId = res.locals.userId;
   try {
-    const user = await db.collection("users").find({ _id: userId }).toArray();
+    const user = await db.collection("users").find({ _id: userId });
     if (!user) return res.status(404).send("Usuário não encontrado");
     delete user.password;
     const transactions = await db
