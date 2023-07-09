@@ -49,9 +49,7 @@ const deleteTransaction = async (req, res) => {
     if (!userId.equals(transaction.userId))
       return res.status(404).send("Você não pode deletar essa transação");
 
-    await db.collection("transactions").deleteOne({
-      _id: new ObjectId(id),
-    });
+    await db.collection("transactions").deleteOne(transaction);
     res.sendStatus(204);
   } catch (err) {
     res.status(500).send(err.message);
@@ -59,7 +57,7 @@ const deleteTransaction = async (req, res) => {
 };
 
 const editTransaction = async (req, res) => {
-  const { id } = req.params();
+  const { id } = req.params;
   const userId = res.locals.userId;
   const { description, amount, type } = req.body;
 
@@ -74,9 +72,9 @@ const editTransaction = async (req, res) => {
 
     await db.collection("transactions").updateOne(transaction, {
       $set: {
-        description: stripHtml(description).result.trim(),
-        amount: stripHtml(amount).result.trim(),
-        type: stripHtml(type).result.trim(),
+        description,
+        amount,
+        type,
       },
     });
     res.sendStatus(201);
