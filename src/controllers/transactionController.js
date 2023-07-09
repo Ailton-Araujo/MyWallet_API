@@ -7,9 +7,6 @@ const listTransactions = async (req, res) => {
   try {
     const user = await db.collection("users").findOne({ _id: userId });
     if (!user) return res.status(404).send("Usuário não encontrado");
-
-    delete user.password;
-    delete user._id;
     const transactions = await db
       .collection("transactions")
       .find({
@@ -17,7 +14,7 @@ const listTransactions = async (req, res) => {
       })
       .sort({ $natural: -1 })
       .toArray();
-    res.send({ user, transactions });
+    res.send(transactions);
   } catch (err) {
     res.status(500).send(err.message);
   }
