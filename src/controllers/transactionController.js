@@ -65,10 +65,14 @@ const editTransaction = async (req, res) => {
 
   try {
     const transaction = await db.collection("transactions").findOne({
-      _id: id,
+      _id: new ObjectId(id),
     });
     if (!transaction) return res.status(404).send("Transação não encontrada");
-    await db.collection("transactions").updateOne({
+
+    if (!userId.equals(transaction.userId))
+      return res.status(404).send("Você não pode alterar essa transação");
+
+    await db.collection("transactions").updateOne(transaction, {
       $set: {
         description: stripHtml(description).result.trim(),
         amount: stripHtml(amount).result.trim(),
