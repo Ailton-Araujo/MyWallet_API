@@ -2,14 +2,11 @@ import { Request, Response, NextFunction } from 'express';
 import httpStatus from 'http-status';
 import { ApplicationError } from '@/utils';
 
-export function handleApplicationErrors(
-  err: ApplicationError | Error,
-  _req: Request,
-  res: Response,
-  _next: NextFunction,
-) {
-  console.log(err, err.name);
-
+export function handleApplicationErrors(err: ApplicationError, _req: Request, res: Response, _next: NextFunction) {
+  console.log(err);
+  if (err.code === 'P2023') {
+    return res.status(httpStatus.BAD_REQUEST).send(err?.meta?.message);
+  }
   switch (err.name) {
     case 'SchemaError':
       return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(err.message);

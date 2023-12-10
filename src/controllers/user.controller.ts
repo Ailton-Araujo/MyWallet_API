@@ -23,5 +23,5 @@ export async function signOut(req: Request, res: Response) {
   const userInfo = res.locals as UserInfo;
   const response = await userService.signOut(userInfo.sessionId);
 
-  res.status(httpStatus.NO_CONTENT).send(response);
+  res.sendStatus(httpStatus.NO_CONTENT);
 }

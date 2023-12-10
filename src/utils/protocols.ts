@@ -6,7 +6,7 @@ export type ApplicationError = {
   name: string;
   message: string;
   code?: string | number;
-  meta?: { target: string; cause: string };
+  meta?: { target?: string; cause?: string; message?: string };
 };
 
 export type signInUserBody = Pick<User, 'email' | 'password'>;

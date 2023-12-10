@@ -21,7 +21,7 @@ export async function deleteTransactions(req: Request, res: Response) {
   const { id } = req.params as transactionParams;
   const userInfo = res.locals as UserInfo;
   const response = await transactionService.deleteTransaction(id, userInfo.userId);
-  res.status(httpStatus.NO_CONTENT).send(response);
+  res.sendStatus(httpStatus.NO_CONTENT);
 }
 
 export async function editTransactions(req: Request, res: Response) {

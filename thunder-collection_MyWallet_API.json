@@ -1,171 +1,171 @@
 {
-    "client": "Thunder Client",
-    "collectionName": "MyWallet_API",
-    "dateExported": "2023-12-10T20:39:20.277Z",
-    "version": "1.1",
-    "folders": [
-        {
-            "_id": "e47b0375-5165-4f6c-8a5d-cadd1e3517d0",
-            "name": "Users",
-            "containerId": "",
-            "created": "2023-12-10T15:47:45.793Z",
-            "sortNum": 10000
-        },
-        {
-            "_id": "db06ccb8-2ff3-4313-8953-5e521d37b88e",
-            "name": "Transactions",
-            "containerId": "",
-            "created": "2023-12-10T15:48:09.105Z",
-            "sortNum": 20000
-        }
-    ],
-    "requests": [
-        {
-            "_id": "41d9046a-24a9-4ea4-ab8e-d7ea1660b749",
-            "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
-            "containerId": "db06ccb8-2ff3-4313-8953-5e521d37b88e",
-            "name": "GET_transactions",
-            "url": "/transactions",
-            "method": "GET",
-            "sortNum": 4375,
-            "created": "2023-07-07T00:55:40.140Z",
-            "modified": "2023-12-10T18:44:22.257Z",
-            "headers": [],
-            "params": [],
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTc1YTZhMDM1MjdiOWU3MDMxOWQwYzUiLCJpYXQiOjE3MDIyMzM4MjV9.sYGl7c9MhRQF4TeF_djYFqjoZcVPS34lrFJV5Pgh-dE"
-            },
-            "tests": []
-        },
-        {
-            "_id": "04bbd4f2-cf3c-4552-a07b-54d46b00e6eb",
-            "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
-            "containerId": "db06ccb8-2ff3-4313-8953-5e521d37b88e",
-            "name": "POST_transaction",
-            "url": "/addTransaction",
-            "method": "POST",
-            "sortNum": 8750,
-            "created": "2023-12-10T19:37:46.401Z",
-            "modified": "2023-12-10T20:25:24.847Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"description\": \"deleta\",\n  \"amount\": 30.55,\n  \"type\": \"saida\"\n}",
-                "form": []
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTc1YTZhMDM1MjdiOWU3MDMxOWQwYzUiLCJpYXQiOjE3MDIyMzM4MjV9.sYGl7c9MhRQF4TeF_djYFqjoZcVPS34lrFJV5Pgh-dE"
-            },
-            "tests": []
-        },
-        {
-            "_id": "8b50d13f-a9e4-4c22-9f11-d1226ff097ec",
-            "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
-            "containerId": "e47b0375-5165-4f6c-8a5d-cadd1e3517d0",
-            "name": "POST_sign-up",
-            "url": "http://localhost:5000/sign-up",
-            "method": "POST",
-            "sortNum": 10000,
-            "created": "2023-07-04T15:20:46.919Z",
-            "modified": "2023-12-10T11:53:04.996Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"name\": \"Teste\",\n  \"email\": \"teste777@teste.com\",\n  \"password\": \"teste123\"\n}",
-                "form": []
-            },
-            "tests": []
-        },
-        {
-            "_id": "1d1746c4-77fa-4f09-a36b-ee886f73cbec",
-            "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
-            "containerId": "db06ccb8-2ff3-4313-8953-5e521d37b88e",
-            "name": "PUT_transaction",
-            "url": "/transaction/657615fe626a72b699041306",
-            "method": "PUT",
-            "sortNum": 17500,
-            "created": "2023-07-09T05:20:19.217Z",
-            "modified": "2023-12-10T20:36:46.755Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"description\": \"editarssssss\",\n  \"amount\": 325.44,\n  \"type\": \"entrada\"\n}",
-                "form": []
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTc1YTZhMDM1MjdiOWU3MDMxOWQwYzUiLCJpYXQiOjE3MDIyMzM4MjV9.sYGl7c9MhRQF4TeF_djYFqjoZcVPS34lrFJV5Pgh-dE"
-            },
-            "tests": []
-        },
-        {
-            "_id": "097edb9d-d287-45a4-8cfb-74498f85529e",
-            "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
-            "containerId": "e47b0375-5165-4f6c-8a5d-cadd1e3517d0",
-            "name": "POST_sign-in",
-            "url": "/sign-in",
-            "method": "POST",
-            "sortNum": 20000,
-            "created": "2023-07-04T22:35:36.814Z",
-            "modified": "2023-12-10T15:11:14.699Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"email\": \"teste777@teste.com\",\n  \"password\": \"teste123\"\n}",
-                "form": []
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "af3ea9ba-22cf-48b0-aff0-812ce29ffba0"
-            },
-            "tests": []
-        },
-        {
-            "_id": "d09da107-2904-4149-9ad2-b8e31b177780",
-            "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
-            "containerId": "db06ccb8-2ff3-4313-8953-5e521d37b88e",
-            "name": "DELETE_transaction",
-            "url": "/transaction/65761eb348c0c1819be2ec86",
-            "method": "DELETE",
-            "sortNum": 25000,
-            "created": "2023-07-08T22:38:27.600Z",
-            "modified": "2023-12-10T20:25:34.632Z",
-            "headers": [],
-            "params": [],
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTc1YTZhMDM1MjdiOWU3MDMxOWQwYzUiLCJpYXQiOjE3MDIyMzM4MjV9.sYGl7c9MhRQF4TeF_djYFqjoZcVPS34lrFJV5Pgh-dE"
-            },
-            "tests": []
-        },
-        {
-            "_id": "1c546bc8-cd1a-47bd-b79a-565042a42f13",
-            "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
-            "containerId": "e47b0375-5165-4f6c-8a5d-cadd1e3517d0",
-            "name": "PUT_sign-out",
-            "url": "/sign-out",
-            "method": "PUT",
-            "sortNum": 30000,
-            "created": "2023-12-10T14:55:04.848Z",
-            "modified": "2023-12-10T18:43:11.793Z",
-            "headers": [],
-            "params": [],
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTc1YTZhMDM1MjdiOWU3MDMxOWQwYzUiLCJpYXQiOjE3MDIyMzM1NzN9.E0oXAAE0OXDjbmgI-fd7B3Mihu9mWzuZrK8q94LqJJM"
-            },
-            "tests": []
-        }
-    ],
-    "settings": {
-        "options": {
-            "baseUrl": "http://localhost:5000"
-        }
+  "client": "Thunder Client",
+  "collectionName": "MyWallet_API",
+  "dateExported": "2023-12-10T20:39:20.277Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "_id": "e47b0375-5165-4f6c-8a5d-cadd1e3517d0",
+      "name": "Users",
+      "containerId": "",
+      "created": "2023-12-10T15:47:45.793Z",
+      "sortNum": 10000
+    },
+    {
+      "_id": "db06ccb8-2ff3-4313-8953-5e521d37b88e",
+      "name": "Transactions",
+      "containerId": "",
+      "created": "2023-12-10T15:48:09.105Z",
+      "sortNum": 20000
     }
+  ],
+  "requests": [
+    {
+      "_id": "41d9046a-24a9-4ea4-ab8e-d7ea1660b749",
+      "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
+      "containerId": "db06ccb8-2ff3-4313-8953-5e521d37b88e",
+      "name": "GET_transactions",
+      "url": "/transactions",
+      "method": "GET",
+      "sortNum": 4375,
+      "created": "2023-07-07T00:55:40.140Z",
+      "modified": "2023-12-10T18:44:22.257Z",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "bearer",
+        "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTc1YTZhMDM1MjdiOWU3MDMxOWQwYzUiLCJpYXQiOjE3MDIyMzM4MjV9.sYGl7c9MhRQF4TeF_djYFqjoZcVPS34lrFJV5Pgh-dE"
+      },
+      "tests": []
+    },
+    {
+      "_id": "04bbd4f2-cf3c-4552-a07b-54d46b00e6eb",
+      "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
+      "containerId": "db06ccb8-2ff3-4313-8953-5e521d37b88e",
+      "name": "POST_transaction",
+      "url": "/addTransaction",
+      "method": "POST",
+      "sortNum": 8750,
+      "created": "2023-12-10T19:37:46.401Z",
+      "modified": "2023-12-10T20:25:24.847Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"description\": \"deleta\",\n  \"amount\": 30.55,\n  \"type\": \"saida\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTc1YTZhMDM1MjdiOWU3MDMxOWQwYzUiLCJpYXQiOjE3MDIyMzM4MjV9.sYGl7c9MhRQF4TeF_djYFqjoZcVPS34lrFJV5Pgh-dE"
+      },
+      "tests": []
+    },
+    {
+      "_id": "8b50d13f-a9e4-4c22-9f11-d1226ff097ec",
+      "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
+      "containerId": "e47b0375-5165-4f6c-8a5d-cadd1e3517d0",
+      "name": "POST_sign-up",
+      "url": "/sign-up",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2023-07-04T15:20:46.919Z",
+      "modified": "2023-12-10T11:53:04.996Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Teste\",\n  \"email\": \"teste777@teste.com\",\n  \"password\": \"teste123\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "1d1746c4-77fa-4f09-a36b-ee886f73cbec",
+      "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
+      "containerId": "db06ccb8-2ff3-4313-8953-5e521d37b88e",
+      "name": "PUT_transaction",
+      "url": "/transaction/657615fe626a72b699041306",
+      "method": "PUT",
+      "sortNum": 17500,
+      "created": "2023-07-09T05:20:19.217Z",
+      "modified": "2023-12-10T20:36:46.755Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"description\": \"editarssssss\",\n  \"amount\": 325.44,\n  \"type\": \"entrada\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTc1YTZhMDM1MjdiOWU3MDMxOWQwYzUiLCJpYXQiOjE3MDIyMzM4MjV9.sYGl7c9MhRQF4TeF_djYFqjoZcVPS34lrFJV5Pgh-dE"
+      },
+      "tests": []
+    },
+    {
+      "_id": "097edb9d-d287-45a4-8cfb-74498f85529e",
+      "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
+      "containerId": "e47b0375-5165-4f6c-8a5d-cadd1e3517d0",
+      "name": "POST_sign-in",
+      "url": "/sign-in",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2023-07-04T22:35:36.814Z",
+      "modified": "2023-12-10T15:11:14.699Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"teste777@teste.com\",\n  \"password\": \"teste123\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "af3ea9ba-22cf-48b0-aff0-812ce29ffba0"
+      },
+      "tests": []
+    },
+    {
+      "_id": "d09da107-2904-4149-9ad2-b8e31b177780",
+      "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
+      "containerId": "db06ccb8-2ff3-4313-8953-5e521d37b88e",
+      "name": "DELETE_transaction",
+      "url": "/transaction/65761eb348c0c1819be2ec86",
+      "method": "DELETE",
+      "sortNum": 25000,
+      "created": "2023-07-08T22:38:27.600Z",
+      "modified": "2023-12-10T20:25:34.632Z",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "bearer",
+        "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTc1YTZhMDM1MjdiOWU3MDMxOWQwYzUiLCJpYXQiOjE3MDIyMzM4MjV9.sYGl7c9MhRQF4TeF_djYFqjoZcVPS34lrFJV5Pgh-dE"
+      },
+      "tests": []
+    },
+    {
+      "_id": "1c546bc8-cd1a-47bd-b79a-565042a42f13",
+      "colId": "7b6c7d90-e873-4e92-a188-59be18e8b036",
+      "containerId": "e47b0375-5165-4f6c-8a5d-cadd1e3517d0",
+      "name": "PUT_sign-out",
+      "url": "/sign-out",
+      "method": "PUT",
+      "sortNum": 30000,
+      "created": "2023-12-10T14:55:04.848Z",
+      "modified": "2023-12-10T18:43:11.793Z",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "bearer",
+        "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTc1YTZhMDM1MjdiOWU3MDMxOWQwYzUiLCJpYXQiOjE3MDIyMzM1NzN9.E0oXAAE0OXDjbmgI-fd7B3Mihu9mWzuZrK8q94LqJJM"
+      },
+      "tests": []
+    }
+  ],
+  "settings": {
+    "options": {
+      "baseUrl": "http://localhost:5000"
+    }
+  }
 }
