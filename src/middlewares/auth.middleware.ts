@@ -1,9 +1,9 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { unauthorizedError } from '@/errors';
 import {} from '@/repositories';
 
-export async function validateAuth(req: AuthenticatedRequest, _res: Response, next: NextFunction) {
+export async function validateAuth(req: Request, res: Response, next: NextFunction) {
   const authHeader = req.header('Authorization');
   if (!authHeader) throw unauthorizedError('Token was not provided');
 
@@ -14,11 +14,10 @@ export async function validateAuth(req: AuthenticatedRequest, _res: Response, ne
 
   //   const session = await authenticationRepository.findSession(token);
   //   if (!session) throw unauthorizedError();
-  req.userId = userId;
+  const userInfo = { userId };
+  res.locals = userInfo;
   next();
 }
-
-export type AuthenticatedRequest = Request & JWTPayload;
 
 type JWTPayload = {
   userId: number;
