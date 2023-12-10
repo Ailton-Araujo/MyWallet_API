@@ -9,6 +9,6 @@ userRouter
   .post('/sign-in', validateBody(signInSchema), signIn)
   .post('/sign-up', validateBody(signUpSchema), signUp)
   .all('/*', validateAuth)
-  .delete('/sign-out', signOut);
+  .put('/sign-out', signOut);
 
 export default userRouter;

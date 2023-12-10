@@ -11,3 +11,5 @@ export type ApplicationError = {
 
 export type signInUserBody = Pick<User, 'email' | 'password'>;
 export type signUpUserBody = Pick<User, 'email' | 'name' | 'password'>;
+
+export type UserInfo = { userId: string; sessionId: string };

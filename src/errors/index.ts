@@ -9,7 +9,21 @@ export function schemaError(message: string): ApplicationError {
 
 export function unauthorizedError(message: string): ApplicationError {
   return {
-    name: 'AuthenticationError',
+    name: 'Unauthorized',
+    message,
+  };
+}
+
+export function conflictError(message: string): ApplicationError {
+  return {
+    name: 'ConflictError',
+    message,
+  };
+}
+
+export function notFoundError(message: string): ApplicationError {
+  return {
+    name: 'NotFoundError',
     message,
   };
 }

@@ -1,22 +1,27 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 
-import { signInUserBody, signUpUserBody } from '@/utils';
+import { userService } from '@/services';
+import { signInUserBody, signUpUserBody, UserInfo } from '@/utils';
 
-export function signIn(req: Request, res: Response) {
-  const { email, password } = req.body as signInUserBody;
+export async function signIn(req: Request, res: Response) {
+  const data = req.body as signInUserBody;
 
-  res.status(httpStatus.OK).send('ok');
+  const response = await userService.signInUser(data);
+
+  res.status(httpStatus.OK).send(response);
 }
 
-export function signUp(req: Request, res: Response) {
-  const { email, password, name } = req.body as signUpUserBody;
+export async function signUp(req: Request, res: Response) {
+  const data = req.body as signUpUserBody;
+  const response = await userService.createUser(data);
 
-  res.status(httpStatus.CREATED).send('ok');
+  res.status(httpStatus.CREATED).send(response);
 }
 
-export function signOut(req: Request, res: Response) {
-  const { userInfo } = res.locals;
+export async function signOut(req: Request, res: Response) {
+  const userInfo = res.locals as UserInfo;
+  const response = await userService.signOut(userInfo.sessionId);
 
-  res.status(httpStatus.OK).send('Usuário deslogado com sucesso');
+  res.status(httpStatus.NO_CONTENT).send(response);
 }

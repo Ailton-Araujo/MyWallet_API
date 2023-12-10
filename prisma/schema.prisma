@@ -9,23 +9,25 @@ datasource db {
 
 model User {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
-  email    String
+  email    String @unique
   name     String
   password String
 
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  Session     Session[]
-  Transaction Transaction[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sessions     Session[]
+  transactions Transaction[]
 
   @@map("users")
 }
 
 model Session {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  token  String
-  userId String @db.ObjectId
-  user   User   @relation(fields: [userId], references: [id])
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  token   String
+  userId  String  @db.ObjectId
+  signOut Boolean @default(false)
+  user    User    @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -41,8 +43,9 @@ model Transaction {
   type        String
   userId      String   @db.ObjectId
   user        User     @relation(fields: [userId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("transactions")
 }

@@ -8,15 +8,19 @@ export function handleApplicationErrors(
   res: Response,
   _next: NextFunction,
 ) {
-  // console.log(err, err.name);
+  console.log(err, err.name);
 
   switch (err.name) {
     case 'SchemaError':
       return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(err.message);
     case 'NotFoundError':
       return res.status(httpStatus.NOT_FOUND).send(err.message);
+    case 'ConflictError':
+      return res.status(httpStatus.CONFLICT).send(err.message);
     case 'Forbidden':
       return res.status(httpStatus.FORBIDDEN).send(err.message);
+    case 'Unauthorized':
+      return res.status(httpStatus.UNAUTHORIZED).send(err.message);
     case 'SyntaxError':
       return res.status(httpStatus.BAD_REQUEST).send(err.message);
     default:
