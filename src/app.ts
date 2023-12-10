@@ -4,11 +4,11 @@ import 'express-async-errors';
 
 import { connectDb } from '@/configs';
 import { handleApplicationErrors } from '@/middlewares';
-import { userRouter } from '@/routes';
+import { userRouter, transactionRouter } from '@/routes';
 
 const app = express();
 
-app.use(cors()).use(json()).use('/', userRouter).use(handleApplicationErrors);
+app.use(cors()).use(json()).use('/', userRouter).use('/', transactionRouter).use(handleApplicationErrors);
 
 export function init(): Promise<Express> {
   connectDb();
