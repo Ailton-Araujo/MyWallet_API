@@ -21,6 +21,8 @@ export function handleApplicationErrors(
       return res.status(httpStatus.FORBIDDEN).send(err.message);
     case 'Unauthorized':
       return res.status(httpStatus.UNAUTHORIZED).send(err.message);
+    case 'JsonWebTokenError':
+      return res.status(httpStatus.BAD_REQUEST).send(err.message);
     case 'SyntaxError':
       return res.status(httpStatus.BAD_REQUEST).send(err.message);
     default:

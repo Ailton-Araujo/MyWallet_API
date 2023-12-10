@@ -18,4 +18,6 @@ export type transactionParams = {
   id: string;
 };
 
+export type TransactionCreateInput = Omit<Transaction, SystemInfo | 'id' | 'date'>;
+
 export type UserInfo = { userId: string; sessionId: string };

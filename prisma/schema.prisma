@@ -38,7 +38,7 @@ model Session {
 model Transaction {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   amount      Int
-  date        DateTime @db.Timestamp
+  date        DateTime @default(now()) @db.Timestamp
   description String
   type        String
   userId      String   @db.ObjectId

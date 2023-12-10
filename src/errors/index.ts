@@ -27,3 +27,10 @@ export function notFoundError(message: string): ApplicationError {
     message,
   };
 }
+
+export function forbiddenError(message: string): ApplicationError {
+  return {
+    name: 'ForbiddenError',
+    message,
+  };
+}

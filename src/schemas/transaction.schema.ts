@@ -3,7 +3,7 @@ import { TransactionCreateOrUpdateBody, transactionParams } from '@/utils';
 
 const transactionSchema = Joi.object<TransactionCreateOrUpdateBody>({
   description: Joi.string().required(),
-  amount: Joi.number().precision(2).greater(0).required(),
+  amount: Joi.number().precision(2).greater(0).strict().required(),
   type: Joi.string().valid('entrada', 'saida').required(),
 });
 

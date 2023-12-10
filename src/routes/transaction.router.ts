@@ -1,15 +1,15 @@
 import { Router } from 'express';
-import {} from '@/controllers';
-import { validateBody, validateParams } from '@/middlewares';
-import {} from '@/schemas';
-import { transactionIdSchema, transactionSchema } from '@/schemas/transaction.schema';
+import { listTransactions, addTransactions, deleteTransactions, editTransactions } from '@/controllers';
+import { validateAuth, validateBody, validateParams } from '@/middlewares';
+import { transactionIdSchema, transactionSchema } from '@/schemas';
 
 const transactionRouter = Router();
 
 transactionRouter
-  .get('/transactions')
-  .post('/addTransaction/', validateBody(transactionSchema))
-  .delete('/transaction/:id')
-  .put('/transaction/:id', validateParams(transactionIdSchema), validateBody(transactionSchema));
+  .all('/*', validateAuth)
+  .get('/transactions', listTransactions)
+  .post('/addTransaction', validateBody(transactionSchema), addTransactions)
+  .delete('/transaction/:id', validateParams(transactionIdSchema), deleteTransactions)
+  .put('/transaction/:id', validateParams(transactionIdSchema), validateBody(transactionSchema), editTransactions);
 
 export { transactionRouter };
