@@ -8,7 +8,13 @@ import { userRouter, transactionRouter } from '@/routes';
 
 const app = express();
 
-app.use(cors()).use(json()).use('/', userRouter).use('/', transactionRouter).use(handleApplicationErrors);
+app
+  .use(cors())
+  .use(json())
+  .use('/health', (_req, res) => res.send('OK!'))
+  .use('/', userRouter)
+  .use('/', transactionRouter)
+  .use(handleApplicationErrors);
 
 export function init(): Promise<Express> {
   connectDb();
