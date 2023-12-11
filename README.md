@@ -39,10 +39,10 @@ npm start
 https://mywallet-api-u99i.onrender.com
 ```
 
-2. Use this API Documentation on Swagger
+2. Use this Documentation on Postman
 
 ```bash
-
+https://documenter.getpostman.com/view/31711518/2s9Ykhg4aL
 ```
 
 3. Use the ThunderClient Collection MyWallet_API on this Repository to test locally
